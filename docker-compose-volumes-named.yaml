@@ -6,11 +6,15 @@ services:
     environment:
       - MYSQL_ROOT_PASSWORD=root
     volumes:
-      - ./dbdata:/var/lib/mysql
+      - volume-dbdata:/var/lib/mysql
   
   nginx:
     image: nginx:1.19.10-alpine
     ports:
       - 8080:80
     volumes:
-      - ./my-site:/usr/share/nginx/html
+      - volume-nginx:/usr/share/nginx/html
+
+volumes:
+  volume-dbdata:
+  volume-nginx:
